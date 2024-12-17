@@ -50,4 +50,3 @@ npm i express mysql2 bcrypt jsonwebtoken cookie-parser nodemon
  * 7. Logout:
  *    POST http://localhost:3000/logout
  */
-
