@@ -1,1 +1,2 @@
-Frontend yet to Complete
+Frontend 
+npm i jwt-decode
