@@ -9,8 +9,8 @@ function Home() {
   const handleLogout = async () => {
     try {
       // Send a logout request to the server (optional)
-      await axios.post(
-        "http://localhost:6270/logout",
+      await axios.get(
+        "http://localhost:6270/auth/logout",
         {},
         {
           headers: {

@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:6270/login", {
+      const response = await axios.post("http://localhost:6270/auth/login", {
         email,
         password,
       });

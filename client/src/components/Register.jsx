@@ -12,7 +12,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:6270/register", {
+      const response = await axios.post("http://localhost:6270/auth/register", {
         name,
         email,
         password,
