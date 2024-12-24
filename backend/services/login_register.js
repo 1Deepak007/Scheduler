@@ -20,7 +20,7 @@ const registerUser = async (name, email, password) => {
   });
 };
 
-const loginUser = async (email, password) => {
+const loginUser = async (email, password, res) => {
   return new Promise((resolve, reject) => {
     pool.query(
       "SELECT * FROM users WHERE email = ?",
@@ -38,14 +38,25 @@ const loginUser = async (email, password) => {
             reject(new Error("Invalid email or password"));
           } else {
             const token = jwt.sign(
-              { userId: user.id },
+              { userId: user.id, email: user.email },
               process.env.JWT_SECRET,
               {
-                expiresIn: "1h",
+                expiresIn: "1d",
               }
             );
-            resolve(token);
+            resolve({ token, user });
           }
+          // res.status(200).json({
+          //   success: true,
+          //   data: {
+          //     message: "User authenticated successfully",
+          //     token: token,
+          //     user: {
+          //       id: user.id,
+          //       email: user.email,
+          //     },
+          //   },
+          // });
         }
       }
     );

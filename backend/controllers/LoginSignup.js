@@ -6,7 +6,7 @@ const register = async (req, res) => {
     const user = await registerUser(name, email, password);
     res.status(201).json({ message: "Registration successful" });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Registration failed" });
   }
 };
@@ -14,10 +14,15 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const token = await loginUser(email, password);
-    res.json({ message: "Login successful", token });
+    const { token, user } = await loginUser(email, password);
+    res.json({
+      message: "Login successful",
+      token,
+      user: { id: user.id, email: user.email },
+    });
+    // console.log(token);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Login failed" });
   }
 };
@@ -27,7 +32,7 @@ const logout = async (req, res) => {
     res.clearCookie("token");
     res.json({ message: "Logged out successfully" });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Failed to log out" });
   }
 };

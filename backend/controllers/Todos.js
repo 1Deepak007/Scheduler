@@ -9,7 +9,7 @@ const createTodo = async (req, res) => {
     const newTodo = await todosService.createTodo(userId, title, description);
     res.status(201).json(newTodo);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Failed to create todo" });
   }
 };
@@ -21,7 +21,7 @@ const getTodos = async (req, res) => {
     const todos = await todosService.getTodosByUser(userId);
     res.json(todos);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Failed to get todos" });
   }
 };
@@ -42,7 +42,7 @@ const updateTodo = async (req, res) => {
     }
     res.json(updatedTodo);
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Failed to update todo" });
   }
 };
@@ -57,7 +57,7 @@ const deleteTodo = async (req, res) => {
     }
     res.json({ message: "Todo deleted successfully" });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ message: "Failed to delete todo" });
   }
 };
